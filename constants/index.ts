@@ -16,6 +16,7 @@ export {
   fadeIn,
   fadeInUp,
   fadeInDown,
+  riseIn,
   scaleIn,
   slideInLeft,
   slideInRight,

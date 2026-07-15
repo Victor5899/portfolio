@@ -1,6 +1,6 @@
 export type { SocialLink, SocialPlatform } from "./social";
 export type { Education } from "./education";
-export type { Profile } from "./profile";
+export type { Profile, HeroStat } from "./profile";
 export type { Skill, SkillCategory, SkillGroup, SkillLevel } from "./skill";
 export type { Project, ProjectDomain, ProjectLinks } from "./project";
 export type { Certification } from "./certification";

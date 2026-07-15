@@ -45,6 +45,19 @@ export const fadeInUp: Variants = {
   },
 };
 
+/**
+ * Translate-only rise (no opacity gate) so text stays legible during entrance.
+ * Used for LCP-critical hero copy where content must never be motion-gated
+ * (SRS FR-HERO-5 / MOT-7).
+ */
+export const riseIn: Variants = {
+  hidden: { y: DISTANCE.md },
+  visible: {
+    y: 0,
+    transition: { duration: DURATION.slow, ease: EASE_OUT },
+  },
+};
+
 export const fadeInDown: Variants = {
   hidden: { opacity: 0, y: -DISTANCE.md },
   visible: {

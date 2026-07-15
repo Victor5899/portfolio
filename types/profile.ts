@@ -1,3 +1,13 @@
+/** A single headline metric rendered as an animated count-up in the hero. */
+export interface HeroStat {
+  label: string;
+  value: number;
+  /** Appended after the value, e.g. "+" or "/10". */
+  suffix?: string;
+  /** Fixed decimal places for the count-up (e.g. 2 for a CGPA like 8.17). */
+  decimals?: number;
+}
+
 export interface Profile {
   name: string;
   firstName: string;
@@ -21,4 +31,8 @@ export interface Profile {
   availabilityMessage?: string;
   /** Role families the portfolio targets. */
   targetRoles: string[];
+  /** Headline metrics for the hero's animated statistics. */
+  heroStats: HeroStat[];
+  /** Curated technology icon keys for the hero's floating badges (decorative). */
+  technologies: string[];
 }
