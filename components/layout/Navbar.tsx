@@ -1,12 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FileText } from "lucide-react";
-import { navigation } from "@/content/navigation";
 import { profile } from "@/content/profile";
 import { NAV_CONFIG } from "@/constants/navigation";
 import { Button } from "@/components/ui/button";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
+import { getVisibleNavigation } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
 import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
@@ -20,6 +20,7 @@ import { MobileNav } from "./MobileNav";
  */
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
+  const navigation = useMemo(() => getVisibleNavigation(), []);
   const activeId = useScrollSpy(navigation.map((item) => item.id));
 
   useEffect(() => {

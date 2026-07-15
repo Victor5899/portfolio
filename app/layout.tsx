@@ -1,13 +1,18 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { buildPersonJsonLd, buildRootMetadata } from "@/lib/seo";
+import {
+  buildPersonJsonLd,
+  buildRootMetadata,
+  buildWebSiteJsonLd,
+} from "@/lib/seo";
 import { SITE } from "@/constants/site";
 import { ThemeProvider } from "@/components/layout/ThemeProvider";
 import { ThemeScript } from "@/components/layout/ThemeScript";
 import { SkipLink } from "@/components/layout/SkipLink";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { BackToTopFloating } from "@/components/layout/BackToTopFloating";
 import { AnimatedBackground, ScrollProgress, Spotlight } from "@/components/effects";
 
 const geistSans = Geist({
@@ -34,7 +39,7 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const personJsonLd = buildPersonJsonLd();
+  const jsonLd = [buildPersonJsonLd(), buildWebSiteJsonLd()];
 
   return (
     <html
@@ -44,10 +49,13 @@ export default function RootLayout({
     >
       <head>
         <ThemeScript />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
-        />
+        {jsonLd.map((schema) => (
+          <script
+            key={String(schema["@type"])}
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          />
+        ))}
       </head>
       <body className="flex min-h-full flex-col">
         <ThemeProvider>
@@ -60,6 +68,7 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+          <BackToTopFloating />
         </ThemeProvider>
       </body>
     </html>

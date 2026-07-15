@@ -2,10 +2,16 @@ export type { SocialLink, SocialPlatform } from "./social";
 export type { Education } from "./education";
 export type { Profile, HeroStat } from "./profile";
 export type { Skill, SkillCategory, SkillGroup, SkillLevel } from "./skill";
-export type { Project, ProjectDomain, ProjectLinks } from "./project";
+export type {
+  Project,
+  ProjectDomain,
+  ProjectLinks,
+  ProjectScreenshot,
+} from "./project";
 export type { Certification } from "./certification";
 export type { Experience, EmploymentType } from "./experience";
 export type { Achievement } from "./achievement";
+export type { Metric } from "./metric";
 export type { TimelineItem, TimelineKind } from "./timeline";
 export type { NavItem } from "./navigation";
 export type { SeoConfig } from "./seo";

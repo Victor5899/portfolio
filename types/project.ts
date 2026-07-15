@@ -11,6 +11,13 @@ export interface ProjectLinks {
   demo?: string;
 }
 
+/** A single screenshot for the detail-page gallery. */
+export interface ProjectScreenshot {
+  src: string;
+  alt: string;
+  caption?: string;
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -20,7 +27,7 @@ export interface Project {
   description: string;
   /** Case-study narrative: what problem this solves. */
   problem: string;
-  /** Case-study narrative: what was built and how. */
+  /** Case-study narrative: what was built and how (the "Solution"). */
   approach: string;
   /** Case-study narrative: the measurable/qualitative outcome. */
   impact: string;
@@ -36,4 +43,24 @@ export interface Project {
   links: ProjectLinks;
   year: string;
   domain: ProjectDomain[];
+
+  // ── Optional case-study detail fields (SRS §7.5 / Appendix A) ──────────────
+  // Every field is optional so the detail page renders a section only when its
+  // content exists (DATA-6 graceful degradation); no layout breaks when absent.
+  /** Goals the project set out to achieve. */
+  objectives?: string[];
+  /** Narrative of the system/data architecture. */
+  architecture?: string;
+  /** User-facing capabilities delivered. */
+  features?: string[];
+  /** Notable implementation details / engineering decisions. */
+  implementation?: string[];
+  /** Hard problems encountered and how they were handled. */
+  challenges?: string[];
+  /** Takeaways and skills gained. */
+  lessonsLearned?: string[];
+  /** Planned next steps / roadmap. */
+  futureImprovements?: string[];
+  /** Screenshot gallery for the detail page. */
+  screenshots?: ProjectScreenshot[];
 }

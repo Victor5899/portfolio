@@ -233,6 +233,22 @@
   .bg-gradient-brand {
     background-image: var(--gradient-brand);
   }
+  /* Slow animated gradient pan for signature accents (SRS §8.6 / project
+     showcase). Transform-free and auto-neutralized under prefers-reduced-motion
+     by the global rule above (MOT-2/MOT-6). */
+  @keyframes gradient-pan {
+    0%,
+    100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-pan 8s ease-in-out infinite;
+  }
   /* Gradient border via padding-box/border-box layering. */
   .border-gradient-brand {
     border: 1px solid transparent;

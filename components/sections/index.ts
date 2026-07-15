@@ -1,4 +1,11 @@
 export { Hero } from "./Hero";
 export { About } from "./About";
 export { TechStack } from "./TechStack";
+export { Projects } from "./Projects";
 export { Skills } from "./Skills";
+export { Achievements } from "./Achievements";
+export { Certifications } from "./Certifications";
+export { GitHub } from "./GitHub";
+export { LeetCode } from "./LeetCode";
+export { Timeline } from "./Timeline";
+export { Contact } from "./Contact";

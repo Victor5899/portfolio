@@ -1,6 +1,7 @@
 export type TimelineKind =
   | "education"
   | "experience"
+  | "project"
   | "milestone"
   | "certification";
 

@@ -18,3 +18,14 @@ export function getProjectBySlug(slug: string): Project | undefined {
 export function getAllProjectSlugs(): string[] {
   return projects.map((project) => project.slug);
 }
+
+/**
+ * The next project in listing order, wrapping around to the first — powers the
+ * "Next project" navigation on detail pages. Returns undefined only when the
+ * slug is unknown or there is a single project.
+ */
+export function getNextProject(slug: string): Project | undefined {
+  const index = projects.findIndex((project) => project.slug === slug);
+  if (index < 0 || projects.length < 2) return undefined;
+  return projects[(index + 1) % projects.length];
+}

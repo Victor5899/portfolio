@@ -7,5 +7,6 @@ export { MobileNav } from "./MobileNav";
 export { ThemeToggle } from "./ThemeToggle";
 export { Footer } from "./Footer";
 export { BackToTop } from "./BackToTop";
+export { BackToTopFloating } from "./BackToTopFloating";
 export { Logo } from "./Logo";
 export { SkipLink } from "./SkipLink";
