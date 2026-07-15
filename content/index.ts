@@ -1,0 +1,12 @@
+export { profile } from "./profile";
+export { education, primaryEducation } from "./education";
+export { socials, socialByPlatform } from "./socials";
+export { skills } from "./skills";
+export { projects } from "./projects";
+export { certifications } from "./certifications";
+export { experience } from "./experience";
+export { achievements } from "./achievements";
+export { timeline } from "./timeline";
+export { navigation } from "./navigation";
+export { seo } from "./seo";
+export { stats } from "./stats";
