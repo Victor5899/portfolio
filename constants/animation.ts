@@ -28,9 +28,25 @@ export const STAGGER = {
 
 export const HOVER_SCALE = 1.03;
 
+/** Reusable transition presets. */
+export const TRANSITION = {
+  base: { duration: DURATION.base, ease: EASE_OUT },
+  slow: { duration: DURATION.slow, ease: EASE_OUT },
+  spring: { type: "spring", stiffness: 260, damping: 24 },
+} as const;
+
 /** Standard "rise + fade" entrance for a single element. */
 export const fadeInUp: Variants = {
   hidden: { opacity: 0, y: DISTANCE.md },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: DURATION.slow, ease: EASE_OUT },
+  },
+};
+
+export const fadeInDown: Variants = {
+  hidden: { opacity: 0, y: -DISTANCE.md },
   visible: {
     opacity: 1,
     y: 0,
@@ -42,6 +58,39 @@ export const fadeIn: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { duration: DURATION.base, ease: EASE_OUT } },
 };
+
+export const scaleIn: Variants = {
+  hidden: { opacity: 0, scale: 0.96 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: DURATION.slow, ease: EASE_OUT },
+  },
+};
+
+export const slideInLeft: Variants = {
+  hidden: { opacity: 0, x: -DISTANCE.lg },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: DURATION.slow, ease: EASE_OUT },
+  },
+};
+
+export const slideInRight: Variants = {
+  hidden: { opacity: 0, x: DISTANCE.lg },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: DURATION.slow, ease: EASE_OUT },
+  },
+};
+
+/** Hover interaction preset for interactive cards/buttons (MOT-4). */
+export const hoverLift = {
+  rest: { y: 0 },
+  hover: { y: -4, transition: { duration: DURATION.fast, ease: EASE_OUT } },
+} as const;
 
 /** Parent container that staggers its children's entrances. */
 export const staggerContainer: Variants = {

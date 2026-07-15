@@ -12,9 +12,17 @@ export {
   DISTANCE,
   STAGGER,
   HOVER_SCALE,
+  TRANSITION,
   fadeIn,
   fadeInUp,
+  fadeInDown,
+  scaleIn,
+  slideInLeft,
+  slideInRight,
+  hoverLift,
   staggerContainer,
   reducedMotionVariants,
   VIEWPORT_ONCE,
 } from "./animation";
+export { BREAKPOINTS } from "./breakpoints";
+export type { Breakpoint } from "./breakpoints";

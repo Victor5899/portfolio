@@ -46,6 +46,12 @@
   --radius-2xl: calc(var(--radius) * 1.8);
   --radius-3xl: calc(var(--radius) * 2.2);
   --radius-4xl: calc(var(--radius) * 2.6);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-purple: var(--brand-purple);
+  --color-brand-foreground: var(--brand-foreground);
+  --shadow-glow: 0 0 40px -12px var(--brand-blue);
+  --shadow-glow-lg: 0 0 70px -10px var(--brand-purple);
+  --shadow-elevated: 0 10px 30px -12px oklch(0 0 0 / 0.5);
 }
 
 :root {
@@ -81,6 +87,17 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  /* Brand accent — blue → purple (SRS §8.2). Slightly darker in light mode for contrast. */
+  --brand-blue: oklch(0.55 0.2 262);
+  --brand-purple: oklch(0.52 0.24 300);
+  --brand-foreground: oklch(0.985 0 0);
+  --gradient-brand: linear-gradient(135deg, var(--brand-blue), var(--brand-purple));
+
+  /* Glass surfaces (SRS §8.5). */
+  --glass-bg: oklch(1 0 0 / 0.65);
+  --glass-border: oklch(0.145 0 0 / 0.08);
+  --glass-blur: 12px;
 }
 
 .dark {
@@ -115,6 +132,17 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+
+  /* Brand accent — brighter for legibility on the dark canvas. */
+  --brand-blue: oklch(0.65 0.19 262);
+  --brand-purple: oklch(0.62 0.22 300);
+  --brand-foreground: oklch(0.985 0 0);
+  --gradient-brand: linear-gradient(135deg, var(--brand-blue), var(--brand-purple));
+
+  /* Glass surfaces — translucent white over the dark background. */
+  --glass-bg: oklch(1 0 0 / 0.06);
+  --glass-border: oklch(1 0 0 / 0.1);
+  --glass-blur: 14px;
 }
 
 @layer base {
@@ -126,5 +154,39 @@
   }
   html {
     @apply font-sans;
+  }
+}
+
+@layer utilities {
+  /* Gradient utilities (SRS §8.2 / CLR-2..3). */
+  .text-gradient-brand {
+    background-image: var(--gradient-brand);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  .bg-gradient-brand {
+    background-image: var(--gradient-brand);
+  }
+  /* Gradient border via padding-box/border-box layering. */
+  .border-gradient-brand {
+    border: 1px solid transparent;
+    background:
+      linear-gradient(var(--card), var(--card)) padding-box,
+      var(--gradient-brand) border-box;
+  }
+
+  /* Glassmorphism surface (SRS §8.5 / GLASS-1). */
+  .glass {
+    background-color: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    backdrop-filter: blur(var(--glass-blur));
+  }
+  /* Non-blur fallback where backdrop-filter is unsupported (GLASS-2 / STY-8). */
+  @supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+    .glass {
+      background-color: var(--card);
+    }
   }
 }
