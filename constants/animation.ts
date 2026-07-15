@@ -28,6 +28,9 @@ export const STAGGER = {
 
 export const HOVER_SCALE = 1.03;
 
+/** Duration (seconds) for numeric count-up animations (hero stats, skill %). */
+export const COUNT_UP_DURATION = 1.4;
+
 /** Reusable transition presets. */
 export const TRANSITION = {
   base: { duration: DURATION.base, ease: EASE_OUT },

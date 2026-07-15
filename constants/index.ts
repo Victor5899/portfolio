@@ -12,6 +12,7 @@ export {
   DISTANCE,
   STAGGER,
   HOVER_SCALE,
+  COUNT_UP_DURATION,
   TRANSITION,
   fadeIn,
   fadeInUp,

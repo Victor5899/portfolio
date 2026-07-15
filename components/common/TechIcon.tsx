@@ -1,5 +1,5 @@
 import type { ComponentType } from "react";
-import { Code2 } from "lucide-react";
+import { BarChart3, Boxes, Code2, Database, LineChart } from "lucide-react";
 import {
   SiPython,
   SiPandas,
@@ -18,9 +18,11 @@ import {
   SiNodedotjs,
   SiStreamlit,
   SiGit,
+  SiGithub,
   SiTailwindcss,
   SiCplusplus,
 } from "react-icons/si";
+import { VscVscode } from "react-icons/vsc";
 import { cn } from "@/lib/utils";
 
 /**
@@ -47,8 +49,16 @@ const ICON_BY_KEY: Record<string, ComponentType<{ className?: string }>> = {
   nodejs: SiNodedotjs,
   streamlit: SiStreamlit,
   git: SiGit,
+  github: SiGithub,
   tailwindcss: SiTailwindcss,
   cpp: SiCplusplus,
+  vscode: VscVscode,
+  // Keys without an official brand glyph fall back to a semantic lucide icon
+  // (still typed, still on-brand) rather than the generic code glyph.
+  sql: Database,
+  tableau: BarChart3,
+  matplotlib: LineChart,
+  xgboost: Boxes,
 };
 
 interface TechIconProps {
