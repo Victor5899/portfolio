@@ -23,9 +23,9 @@ export default function Error({
   }, [error]);
 
   return (
-    <Container className="flex min-h-[60vh] flex-col items-center justify-center gap-6 py-24 text-center">
-      <Eyebrow>Something went wrong</Eyebrow>
-      <Heading as="h1" size="h1">
+    <Container className="flex min-h-[70vh] flex-col justify-center gap-8 py-24">
+      <Eyebrow className="text-brand">Something went wrong</Eyebrow>
+      <Heading as="h1" size="h1" className="max-w-3xl">
         An unexpected error occurred
       </Heading>
       <Text variant="lead" className="max-w-md">
@@ -34,8 +34,8 @@ export default function Error({
       </Text>
       <Button
         type="button"
-        variant="gradient"
-        size="lg"
+        size="xl"
+        className="self-start"
         onClick={() => unstable_retry()}
       >
         <RotateCcw />

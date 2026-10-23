@@ -47,12 +47,12 @@ export function DifficultyBar({ label, count, total }: DifficultyBarProps) {
         aria-valuemin={0}
         aria-valuemax={total}
         className={cn(
-          "bg-muted mt-2 h-1.5 w-full overflow-hidden rounded-full",
+          "bg-border mt-2.5 h-0.5 w-full overflow-hidden rounded-full",
           !hasData && "opacity-60",
         )}
       >
         <motion.div
-          className="bg-gradient-brand h-full w-full origin-left rounded-full"
+          className="bg-brand h-full w-full origin-left rounded-full"
           initial={{ scaleX: prefersReduced ? target : 0 }}
           animate={{ scaleX: inView || prefersReduced ? target : 0 }}
           transition={

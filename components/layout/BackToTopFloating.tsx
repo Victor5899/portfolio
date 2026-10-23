@@ -38,7 +38,7 @@ export function BackToTopFloating() {
       tabIndex={visible ? 0 : -1}
       aria-hidden={!visible}
       className={cn(
-        "glass focus-visible:ring-ring fixed bottom-6 right-6 z-40 grid size-11 place-items-center rounded-full text-foreground shadow-elevated transition-all duration-300 hover:-translate-y-0.5 hover:shadow-glow focus-visible:ring-2 focus-visible:outline-none",
+        "border-border-strong bg-surface text-foreground shadow-elevated hover:bg-surface-raised focus-visible:ring-ring fixed right-6 bottom-6 z-40 grid size-11 place-items-center rounded-full border transition-[opacity,transform,background-color] duration-300 hover:-translate-y-0.5 focus-visible:ring-2 focus-visible:outline-none",
         visible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-3 opacity-0",

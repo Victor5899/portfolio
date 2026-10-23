@@ -1,5 +1,4 @@
-import { GlassCard } from "./GlassCard";
-import { GradientText } from "./GradientText";
+import { cn } from "@/lib/utils";
 import { CountUp } from "./CountUp";
 import { Icon } from "./Icon";
 
@@ -12,15 +11,14 @@ interface StatCardProps {
   description?: string;
   /** Semantic icon key resolved by `Icon`. */
   icon?: string;
-  glow?: boolean;
+  className?: string;
 }
 
 /**
- * Reusable animated metric card (SRS FR-ACH-1 / FR-GH-2 / FR-LC-2). The count-up
- * is the only client leaf; the card shell stays server-rendered (PERF-1). Shared
- * across Achievements, GitHub, and LeetCode so the counter treatment lives in
- * one place (DRY-1). Uses generic elements so it stays valid inside the motion
- * reveal wrappers; the value and label read as ordinary text to assistive tech.
+ * Editorial metric (SRS FR-ACH-1 / FR-GH-2 / FR-LC-2): a hairline rule, a large
+ * serif numeral, and a mono label. The count-up is the only client leaf; the
+ * shell stays server-rendered (PERF-1). Shared by Achievements and GitHub so the
+ * figure treatment lives in one place (DRY-1).
  */
 export function StatCard({
   value,
@@ -30,45 +28,40 @@ export function StatCard({
   decimals,
   description,
   icon,
-  glow = false,
+  className,
 }: StatCardProps) {
   return (
-    <GlassCard
-      padding="lg"
-      glow={glow}
-      className="flex h-full flex-col gap-3 text-center"
+    <div
+      className={cn(
+        "border-border-strong flex h-full flex-col gap-3 border-t pt-6",
+        className,
+      )}
     >
-      {icon ? (
-        <span
-          aria-hidden
-          className="text-brand-blue mx-auto grid size-11 place-items-center rounded-xl border border-border/70 bg-card/40"
-        >
-          <span className="size-5">
+      <div className="flex items-center justify-between gap-3">
+        <p className="text-muted-foreground font-mono text-xs uppercase tracking-eyebrow">
+          {label}
+        </p>
+        {icon ? (
+          <span aria-hidden className="text-brand size-4">
             <Icon name={icon} />
           </span>
-        </span>
-      ) : null}
+        ) : null}
+      </div>
 
-      <p className="font-heading text-4xl font-semibold tracking-tight sm:text-5xl">
-        <GradientText>
-          <CountUp
-            value={value}
-            decimals={decimals}
-            suffix={suffix}
-            prefix={prefix}
-          />
-        </GradientText>
-      </p>
-
-      <p className="text-muted-foreground font-mono text-xs uppercase tracking-wide">
-        {label}
+      <p className="font-display text-stat text-foreground">
+        <CountUp
+          value={value}
+          decimals={decimals}
+          suffix={suffix}
+          prefix={prefix}
+        />
       </p>
 
       {description ? (
-        <p className="text-muted-foreground/80 text-sm leading-relaxed">
+        <p className="text-muted-foreground text-sm leading-relaxed text-pretty">
           {description}
         </p>
       ) : null}
-    </GlassCard>
+    </div>
   );
 }

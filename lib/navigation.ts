@@ -18,3 +18,13 @@ const SECTION_RENDERS: Record<string, boolean> = {
 export function getVisibleNavigation(): NavItem[] {
   return navigation.filter((item) => SECTION_RENDERS[item.id] !== false);
 }
+
+/**
+ * Compact header set. Falls back to the full visible list if nothing is marked
+ * primary, so the bar never goes empty.
+ */
+export function getPrimaryNavigation(): NavItem[] {
+  const visible = getVisibleNavigation();
+  const primary = visible.filter((item) => item.primary);
+  return primary.length > 0 ? primary : visible;
+}

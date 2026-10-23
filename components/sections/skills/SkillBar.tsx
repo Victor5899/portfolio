@@ -61,10 +61,10 @@ export function SkillBar({ name, icon, level }: Skill) {
         aria-valuenow={pct}
         aria-valuemin={0}
         aria-valuemax={100}
-        className="bg-muted mt-2 h-1.5 w-full overflow-hidden rounded-full"
+        className="bg-border mt-2.5 h-0.5 w-full overflow-hidden rounded-full"
       >
         <motion.div
-          className="bg-gradient-brand h-full w-full origin-left rounded-full"
+          className="bg-brand h-full w-full origin-left rounded-full"
           initial={{ scaleX: prefersReduced ? target : 0 }}
           animate={{ scaleX: inView || prefersReduced ? target : 0 }}
           transition={

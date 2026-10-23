@@ -1,6 +1,5 @@
 import type { Metric } from "@/types";
-import { GlassCard } from "@/components/common/GlassCard";
-import { GradientText } from "@/components/common/GradientText";
+import { cn } from "@/lib/utils";
 import { CountUp } from "@/components/common/CountUp";
 
 interface HeroStatsProps {
@@ -8,26 +7,27 @@ interface HeroStatsProps {
   className?: string;
 }
 
-/** Grid of headline metrics derived from content by `lib/metrics`. */
+/** Headline metrics derived from content by `lib/metrics`, set as an editorial figure row. */
 export function HeroStats({ stats, className }: HeroStatsProps) {
   return (
-    <dl className={className}>
+    <dl className={cn("grid grid-cols-3 gap-4 sm:gap-6", className)}>
       {stats.map((stat) => (
-        <GlassCard key={stat.label} padding="sm" className="text-center">
-          <dd className="font-heading text-2xl font-semibold tracking-tight sm:text-3xl">
-            <GradientText>
-              <CountUp
-                value={stat.value}
-                decimals={stat.decimals}
-                prefix={stat.prefix}
-                suffix={stat.suffix}
-              />
-            </GradientText>
-          </dd>
-          <dt className="text-muted-foreground mt-1 font-mono text-xs uppercase tracking-wide">
+        <div
+          key={stat.label}
+          className="border-border-strong flex flex-col-reverse gap-2 border-t pt-4"
+        >
+          <dt className="text-muted-foreground font-mono text-xs uppercase leading-snug tracking-eyebrow">
             {stat.label}
           </dt>
-        </GlassCard>
+          <dd className="font-display text-foreground text-4xl leading-none sm:text-5xl">
+            <CountUp
+              value={stat.value}
+              decimals={stat.decimals}
+              prefix={stat.prefix}
+              suffix={stat.suffix}
+            />
+          </dd>
+        </div>
       ))}
     </dl>
   );

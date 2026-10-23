@@ -31,7 +31,7 @@ export default function GlobalError({
         <button
           type="button"
           onClick={() => unstable_retry()}
-          className="bg-gradient-brand text-brand-foreground rounded-lg px-5 py-2.5 text-sm font-medium"
+          className="bg-primary text-primary-foreground focus-visible:ring-ring rounded-full px-6 py-3 text-sm font-medium focus-visible:ring-2 focus-visible:outline-none"
         >
           Try again
         </button>

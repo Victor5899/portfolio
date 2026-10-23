@@ -4,8 +4,9 @@ import { ROUTES } from "@/constants/routes";
 import { cn } from "@/lib/utils";
 
 /**
- * Wordmark/brandmark for the header and footer (FR-NAV-1). Data-driven from
- * `content/profile` — a gradient monogram plus the owner's name. Links home.
+ * Wordmark for the header and footer (FR-NAV-1). Data-driven from
+ * `content/profile` — a hairline-framed serif monogram plus the owner's name.
+ * Links home.
  */
 export function Logo({ className }: { className?: string }) {
   const initials = `${profile.firstName.charAt(0)}${profile.lastName.charAt(0)}`;
@@ -14,17 +15,17 @@ export function Logo({ className }: { className?: string }) {
     <Link
       href={ROUTES.home}
       className={cn(
-        "focus-visible:ring-ring group inline-flex items-center gap-2.5 rounded-lg focus-visible:ring-2 focus-visible:outline-none",
+        "group focus-visible:ring-ring inline-flex shrink-0 items-center gap-3 rounded-md whitespace-nowrap focus-visible:ring-2 focus-visible:ring-offset-4 focus-visible:ring-offset-background focus-visible:outline-none",
         className,
       )}
     >
       <span
         aria-hidden
-        className="bg-gradient-brand text-brand-foreground grid size-8 place-items-center rounded-lg font-mono text-sm font-semibold shadow-glow"
+        className="border-border-strong text-foreground group-hover:border-brand font-display grid size-8 place-items-center rounded-md border text-base italic transition-colors"
       >
         {initials}
       </span>
-      <span className="text-foreground font-semibold tracking-tight">
+      <span className="text-foreground text-sm font-medium tracking-tight">
         {profile.name}
       </span>
     </Link>

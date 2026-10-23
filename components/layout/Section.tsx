@@ -11,7 +11,7 @@ const sectionVariants = cva("relative w-full", {
       none: "",
       sm: "py-12 sm:py-16",
       md: "py-16 sm:py-24",
-      lg: "py-24 sm:py-32",
+      lg: "py-section",
     },
   },
   defaultVariants: {
@@ -28,8 +28,9 @@ interface SectionProps
 }
 
 /**
- * Semantic section wrapper (SRS §7 shared shell): stable anchor id, consistent
- * vertical rhythm, and scroll offset so sticky-nav anchoring lands correctly.
+ * Semantic section wrapper (SRS §7 shared shell): stable anchor id, the
+ * tokenized vertical rhythm (`py-section`), and scroll offset so sticky-nav
+ * anchoring lands correctly.
  */
 export function Section({
   id,
@@ -65,17 +66,19 @@ interface SectionHeadingProps
   eyebrow?: ReactNode;
   title: ReactNode;
   description?: ReactNode;
-  align?: "left" | "center";
   /** Semantic heading level for correct document outline (defaults to h2). */
   as?: "h1" | "h2" | "h3";
 }
 
-/** Standard section header: eyebrow + title + optional description (SRS §7). */
+/**
+ * Editorial section header (SRS §7): a hairline rule carrying the section
+ * number, a large serif title, and an optional standfirst that sits beside the
+ * title on wide screens.
+ */
 export function SectionHeading({
   eyebrow,
   title,
   description,
-  align = "left",
   as = "h2",
   className,
   ...props
@@ -83,21 +86,29 @@ export function SectionHeading({
   return (
     <div
       className={cn(
-        "flex flex-col gap-3",
-        align === "center" && "items-center text-center",
+        "border-border grid gap-6 border-t pt-6 lg:grid-cols-12 lg:gap-8",
         className,
       )}
       {...props}
     >
-      {eyebrow ? <Eyebrow>{eyebrow}</Eyebrow> : null}
-      <Heading as={as} size="h2">
-        {title}
-      </Heading>
-      {description ? (
-        <Text variant="lead" className={cn("max-w-2xl", align === "center" && "mx-auto")}>
-          {description}
-        </Text>
+      {eyebrow ? (
+        <Eyebrow className="text-brand lg:col-span-2 lg:pt-3">{eyebrow}</Eyebrow>
       ) : null}
+      <div
+        className={cn(
+          "grid gap-5 lg:grid-cols-10 lg:items-end lg:gap-8",
+          eyebrow ? "lg:col-span-10" : "lg:col-span-12",
+        )}
+      >
+        <Heading as={as} size="h1" className="lg:col-span-6">
+          {title}
+        </Heading>
+        {description ? (
+          <Text variant="lead" className="max-w-xl text-pretty lg:col-span-4">
+            {description}
+          </Text>
+        ) : null}
+      </div>
     </div>
   );
 }

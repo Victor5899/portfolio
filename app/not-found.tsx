@@ -3,7 +3,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Heading, Text, Eyebrow } from "@/components/common/Typography";
-import { GradientText } from "@/components/common/GradientText";
+import { AccentText } from "@/components/common/AccentText";
 import { Button } from "@/components/ui/button";
 import { ROUTES } from "@/constants/routes";
 
@@ -17,18 +17,19 @@ export const metadata: Metadata = {
  */
 export default function NotFound() {
   return (
-    <Container className="flex min-h-[60vh] flex-col items-center justify-center gap-6 py-24 text-center">
-      <Eyebrow>Error 404</Eyebrow>
-      <GradientText as="p" className="font-mono text-7xl font-semibold sm:text-8xl">
-        404
-      </GradientText>
-      <Heading as="h1" size="h1">
-        This page wandered off
+    <Container className="flex min-h-[70vh] flex-col justify-center gap-8 py-24">
+      <Eyebrow className="text-brand">Error 404</Eyebrow>
+      <Heading as="h1" size="display" className="max-w-4xl">
+        This page <AccentText>wandered off</AccentText>
       </Heading>
       <Text variant="lead" className="max-w-md">
         The page you are looking for doesn&apos;t exist or may have been moved.
       </Text>
-      <Button render={<Link href={ROUTES.home} />} variant="gradient" size="lg">
+      <Button
+        render={<Link href={ROUTES.home} />}
+        size="xl"
+        className="self-start"
+      >
         <ArrowLeft />
         Back to home
       </Button>

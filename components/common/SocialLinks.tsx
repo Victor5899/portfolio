@@ -30,9 +30,9 @@ export function SocialLinks({
             {...(link.external
               ? { target: "_blank", rel: "noopener noreferrer" }
               : {})}
-            className="text-muted-foreground hover:text-foreground focus-visible:ring-ring inline-flex size-9 items-center justify-center rounded-lg transition-colors hover:bg-muted focus-visible:ring-2 focus-visible:outline-none"
+            className="text-muted-foreground hover:text-foreground hover:border-border-strong focus-visible:ring-ring inline-flex size-11 items-center justify-center rounded-full border border-transparent transition-colors focus-visible:ring-2 focus-visible:outline-none"
           >
-            <span className={cn("size-[1.05rem]", iconClassName)}>
+            <span className={cn("size-4", iconClassName)}>
               <SocialIcon platform={link.platform} />
             </span>
           </a>

@@ -1,4 +1,3 @@
-import { Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface BulletListProps {
@@ -7,16 +6,18 @@ interface BulletListProps {
 }
 
 /**
- * Reusable check-marked list for every bullet-style case-study section
- * (Objectives, Features, Challenges, …) so their markup is defined once (DRY-1).
+ * Ruled editorial list for every bullet-style case-study section (Objectives,
+ * Features, Challenges, …) so their markup is defined once (DRY-1).
  */
 export function BulletList({ items, className }: BulletListProps) {
   return (
-    <ul className={cn("max-w-3xl space-y-3", className)}>
+    <ul className={cn("border-border divide-border max-w-3xl divide-y border-y", className)}>
       {items.map((item) => (
-        <li key={item} className="flex gap-3">
-          <Check className="text-brand-blue mt-1 size-4 shrink-0" aria-hidden />
-          <span className="text-muted-foreground leading-relaxed">{item}</span>
+        <li key={item} className="flex gap-4 py-4">
+          <span aria-hidden className="text-brand font-mono text-sm leading-relaxed">
+            —
+          </span>
+          <span className="text-foreground leading-relaxed text-pretty">{item}</span>
         </li>
       ))}
     </ul>

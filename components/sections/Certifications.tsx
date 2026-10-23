@@ -3,7 +3,7 @@ import { certifications } from "@/content/certifications";
 import { SECTION_IDS } from "@/constants/navigation";
 import { getSectionMeta } from "@/lib/sections";
 import { Section, SectionHeading } from "@/components/layout/Section";
-import { GlassCard } from "@/components/common/GlassCard";
+import { Surface } from "@/components/common/Surface";
 import { Icon } from "@/components/common/Icon";
 import { TechBadges } from "@/components/common/TechBadges";
 import { StaggerGroup, StaggerItem } from "@/components/common/Reveal";
@@ -24,18 +24,13 @@ export function Certifications() {
     <Section id={SECTION_IDS.certifications}>
       <SectionHeading eyebrow={eyebrow} title={label} />
 
-      <StaggerGroup className="mt-12 grid gap-4 sm:gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <StaggerGroup className="mt-14 grid gap-4 sm:mt-20 sm:grid-cols-2 lg:grid-cols-3">
         {certifications.map((cert) => (
           <StaggerItem key={`${cert.title}-${cert.issuer}`}>
-            <GlassCard padding="lg" className="flex h-full flex-col gap-4">
+            <Surface padding="lg" className="flex h-full flex-col gap-4">
               <div className="flex items-start justify-between gap-3">
-                <span
-                  aria-hidden
-                  className="text-brand-blue grid size-10 shrink-0 place-items-center rounded-xl border border-border/70 bg-card/40"
-                >
-                  <span className="size-5">
-                    <Icon name="certification" />
-                  </span>
+                <span aria-hidden className="text-brand size-5">
+                  <Icon name="certification" />
                 </span>
                 <span className="text-muted-foreground font-mono text-xs">
                   {cert.date}
@@ -73,7 +68,7 @@ export function Certifications() {
                   </a>
                 ) : null}
               </div>
-            </GlassCard>
+            </Surface>
           </StaggerItem>
         ))}
       </StaggerGroup>

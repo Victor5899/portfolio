@@ -21,10 +21,8 @@ export type SectionId = (typeof SECTION_IDS)[keyof typeof SECTION_IDS];
 
 /** Behavioral constants for the sticky header and anchor scrolling. */
 export const NAV_CONFIG = {
-  /** Sticky header height in px (offset for scroll-spy + anchor targets). */
-  headerHeight: 64,
-  /** Extra scroll offset applied above section anchors in px. */
+  /** Extra scroll offset applied above section anchors in px (clears the 4rem `h-header`). */
   scrollOffset: 80,
-  /** Scroll distance in px after which the nav gains its glass background. */
-  glassThreshold: 24,
+  /** Scroll distance in px after which the nav gains its solid background. */
+  scrolledThreshold: 24,
 } as const;

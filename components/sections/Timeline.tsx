@@ -15,14 +15,14 @@ export function Timeline() {
   if (timeline.length === 0) return null;
 
   return (
-    <Section id={SECTION_IDS.timeline} container="md">
+    <Section id={SECTION_IDS.timeline}>
       <SectionHeading
         eyebrow={eyebrow}
         title={label}
         description="Education, projects, and milestones on the way to data & software roles."
       />
 
-      <ol className="mt-12">
+      <ol className="border-border mt-14 border-b sm:mt-20">
         {timeline.map((item, index) => (
           <TimelineEntry key={`${item.kind}-${item.title}-${index}`} item={item} />
         ))}

@@ -2,23 +2,25 @@ import type { ElementType, HTMLAttributes } from "react";
 import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
-const headingVariants = cva(
-  "font-heading font-semibold tracking-tight text-balance text-foreground",
-  {
-    variants: {
-      size: {
-        display: "text-4xl leading-[1.05] sm:text-5xl lg:text-6xl",
-        h1: "text-3xl sm:text-4xl lg:text-5xl",
-        h2: "text-2xl sm:text-3xl",
-        h3: "text-xl sm:text-2xl",
-        h4: "text-lg sm:text-xl",
-      },
-    },
-    defaultVariants: {
-      size: "h2",
+/**
+ * Editorial type scale (SRS TYP-1, v1.2): display/h1/h2 use the serif display
+ * face on the fluid `text-display` / `text-title` / `text-headline` tokens;
+ * h3/h4 stay in the sans UI face for dense content.
+ */
+const headingVariants = cva("text-balance text-foreground", {
+  variants: {
+    size: {
+      display: "font-display text-display font-normal",
+      h1: "font-display text-title font-normal",
+      h2: "font-display text-headline font-normal",
+      h3: "font-sans text-xl font-medium tracking-tight sm:text-2xl",
+      h4: "font-sans text-lg font-medium tracking-tight",
     },
   },
-);
+  defaultVariants: {
+    size: "h2",
+  },
+});
 
 interface HeadingProps
   extends HTMLAttributes<HTMLHeadingElement>,
@@ -41,7 +43,7 @@ const textVariants = cva("", {
     variant: {
       lead: "text-lg leading-relaxed text-muted-foreground sm:text-xl",
       body: "text-base leading-relaxed text-foreground sm:text-lg",
-      muted: "text-sm text-muted-foreground sm:text-base",
+      muted: "text-sm leading-relaxed text-muted-foreground sm:text-base",
       small: "text-sm text-muted-foreground",
     },
   },
@@ -66,7 +68,7 @@ export function Text({
   return <Tag className={cn(textVariants({ variant }), className)} {...props} />;
 }
 
-/** Uppercase mono label used as a section eyebrow (SRS TYP-1). */
+/** Wide-tracked mono label used for eyebrows and metadata (SRS TYP-1). */
 export function Eyebrow({
   className,
   ...props
@@ -74,7 +76,7 @@ export function Eyebrow({
   return (
     <span
       className={cn(
-        "font-mono text-sm font-medium uppercase tracking-wider text-muted-foreground",
+        "font-mono text-xs font-medium uppercase tracking-eyebrow text-muted-foreground",
         className,
       )}
       {...props}

@@ -11,8 +11,10 @@ export default function Loading() {
       aria-live="polite"
       className="flex min-h-[60vh] flex-col items-center justify-center gap-4"
     >
-      <Loader2 className="text-brand-blue size-8 animate-spin" />
-      <span className="text-muted-foreground font-mono text-sm">Loading…</span>
+      <Loader2 aria-hidden className="text-brand size-6 animate-spin" />
+      <span className="text-muted-foreground font-mono text-xs uppercase tracking-eyebrow">
+        Loading…
+      </span>
     </div>
   );
 }

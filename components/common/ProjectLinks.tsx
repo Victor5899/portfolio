@@ -11,9 +11,9 @@ interface ProjectLinksProps {
 }
 
 /**
- * Renders the external action buttons (GitHub / Live Demo / Demo) for a project,
- * showing only the links that exist so empty/optional link fields degrade
- * gracefully (FR-PROJ-6 / DATA-6). External links open in a new tab with
+ * Renders the external action buttons (Live Demo / GitHub / Demo) for a
+ * project, showing only the links that exist so empty/optional link fields
+ * degrade gracefully (FR-PROJ-6 / DATA-6). External links open in a new tab with
  * `rel="noopener noreferrer"` (FR-CERT-2 pattern). Returns null when there are
  * no links to render.
  */
@@ -26,7 +26,6 @@ export function ProjectLinks({ links, className, size = "lg" }: ProjectLinksProp
       {live ? (
         <Button
           size={size}
-          variant="gradient"
           render={<a href={live} target="_blank" rel="noopener noreferrer" />}
         >
           <ExternalLink />
@@ -36,7 +35,7 @@ export function ProjectLinks({ links, className, size = "lg" }: ProjectLinksProp
       {repo ? (
         <Button
           size={size}
-          variant="glass"
+          variant="outline"
           render={<a href={repo} target="_blank" rel="noopener noreferrer" />}
         >
           <FaGithub />
@@ -46,7 +45,7 @@ export function ProjectLinks({ links, className, size = "lg" }: ProjectLinksProp
       {demo ? (
         <Button
           size={size}
-          variant="glass"
+          variant="outline"
           render={<a href={demo} target="_blank" rel="noopener noreferrer" />}
         >
           <PlayCircle />

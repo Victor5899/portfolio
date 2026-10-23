@@ -20,7 +20,7 @@ interface TechBadgesProps {
 export function TechBadges({
   stack,
   className,
-  variant = "glass",
+  variant = "outline",
   max,
 }: TechBadgesProps) {
   const shown = max ? stack.slice(0, max) : stack;
@@ -32,9 +32,9 @@ export function TechBadges({
         const iconKey = getTechIconKey(tech);
         return (
           <li key={tech}>
-            <Badge variant={variant} className="gap-1.5 py-1">
+            <Badge variant={variant}>
               {iconKey ? (
-                <span className="size-3.5" aria-hidden>
+                <span className="text-muted-foreground size-3.5" aria-hidden>
                   <TechIcon name={iconKey} />
                 </span>
               ) : null}
@@ -45,7 +45,7 @@ export function TechBadges({
       })}
       {remaining > 0 ? (
         <li>
-          <Badge variant="muted" className="py-1">
+          <Badge variant="muted">
             +{remaining}
           </Badge>
         </li>
