@@ -138,21 +138,23 @@ export function MobileNav({ items, activeId }: MobileNavProps) {
             </nav>
 
             <div className="mt-auto flex flex-col gap-4">
-              <Button
-                render={
-                  <a
-                    href={profile.resumeUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  />
-                }
-                variant="gradient"
-                size="lg"
-                className="w-full"
-              >
-                <FileText />
-                Resume
-              </Button>
+              {profile.resumeUrl ? (
+                <Button
+                  render={
+                    <a
+                      href={profile.resumeUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    />
+                  }
+                  variant="gradient"
+                  size="lg"
+                  className="w-full"
+                >
+                  <FileText />
+                  Resume
+                </Button>
+              ) : null}
               <SocialLinks className="justify-center" />
             </div>
           </div>

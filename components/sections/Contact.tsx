@@ -62,20 +62,22 @@ export function Contact() {
                 {profile.email}
               </Button>
             ) : null}
-            <Button
-              variant="glass"
-              className="h-11 w-full rounded-xl px-6 text-[0.95rem] sm:w-auto"
-              render={
-                <a
-                  href={profile.resumeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                />
-              }
-            >
-              <FileText />
-              Download résumé
-            </Button>
+            {profile.resumeUrl ? (
+              <Button
+                variant="glass"
+                className="h-11 w-full rounded-xl px-6 text-[0.95rem] sm:w-auto"
+                render={
+                  <a
+                    href={profile.resumeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  />
+                }
+              >
+                <FileText />
+                Download résumé
+              </Button>
+            ) : null}
           </div>
         </GlassCard>
       </Reveal>

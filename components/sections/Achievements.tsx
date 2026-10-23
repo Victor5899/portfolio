@@ -25,10 +25,10 @@ export function Achievements() {
       <SectionHeading
         eyebrow={eyebrow}
         title={label}
-        description="Measurable progress across academics, projects, and the tools I build with."
+        description="Measurable progress across projects, focus areas, and the tools I build with."
       />
 
-      <StaggerGroup className="mt-12 grid grid-cols-2 gap-4 sm:gap-5 lg:grid-cols-4">
+      <StaggerGroup className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-3 sm:gap-5">
         {metrics.map((metric) => (
           <StaggerItem key={metric.label}>
             <StatCard {...metric} />

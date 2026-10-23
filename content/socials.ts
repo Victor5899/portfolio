@@ -1,40 +1,41 @@
 import type { SocialLink } from "@/types";
+import { toMailtoHref } from "@/lib/format";
+import { profile } from "./profile";
 
 /**
- * Social + contact links. `href` values for external profiles are the owner's
- * handles — confirm/replace usernames if any differ. Email is required for the
- * contact CTA (FR-CONT-1).
+ * Social + contact links (owner-confirmed). The email entry derives from
+ * `profile.email` so the address is single-sourced (FR-CONT-1).
  */
 export const socials: SocialLink[] = [
   {
     platform: "github",
     label: "GitHub",
-    href: "https://github.com/victorsoren",
-    username: "victorsoren",
+    href: "https://github.com/Victor5899",
+    username: "Victor5899",
     icon: "github",
     external: true,
   },
   {
     platform: "linkedin",
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/victor-ipil-soren",
-    username: "victor-ipil-soren",
+    href: "https://www.linkedin.com/in/victor-ipil-soren-a258852b9/",
+    username: "victor-ipil-soren-a258852b9",
     icon: "linkedin",
     external: true,
   },
   {
     platform: "leetcode",
     label: "LeetCode",
-    href: "https://leetcode.com/u/victorsoren",
-    username: "victorsoren",
+    href: "https://leetcode.com/u/Victor5899/",
+    username: "Victor5899",
     icon: "leetcode",
     external: true,
   },
   {
     platform: "email",
     label: "Email",
-    href: "mailto:victor.ipil.soren@gmail.com",
-    username: "victor.ipil.soren@gmail.com",
+    href: toMailtoHref(profile.email),
+    username: profile.email,
     icon: "mail",
     external: false,
   },

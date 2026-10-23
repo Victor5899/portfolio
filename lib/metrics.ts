@@ -1,13 +1,13 @@
 import type { Metric } from "@/types";
 import { projects } from "@/content/projects";
 import { skills } from "@/content/skills";
-import { primaryEducation } from "@/content/education";
 import { profile } from "@/content/profile";
 
 /**
- * Derives the Achievements "by the numbers" metrics from the content layer so
- * every figure stays accurate and single-sourced (DRY-2) — editing a project,
- * skill, or the CGPA updates the counters automatically, never a component.
+ * Derives the headline "by the numbers" metrics (Hero statistics and
+ * Achievements counters) from the content layer so every figure stays accurate
+ * and single-sourced (DRY-2) — editing a project, skill, or target role updates
+ * the counters automatically, never a component.
  */
 export function getPortfolioMetrics(): Metric[] {
   const technologyCount = new Set(
@@ -27,13 +27,6 @@ export function getPortfolioMetrics(): Metric[] {
       suffix: "+",
       icon: "code",
       description: "Languages, frameworks, and data tools in the stack.",
-    },
-    {
-      label: "CGPA",
-      value: Number.parseFloat(primaryEducation.cgpa),
-      decimals: 2,
-      icon: "award",
-      description: `${primaryEducation.degree} · ${primaryEducation.university}.`,
     },
     {
       label: "Focus Domains",

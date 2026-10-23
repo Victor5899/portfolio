@@ -11,12 +11,12 @@ const leetcodeLink = socialByPlatform.leetcode;
  */
 export const stats: StatsConfig = {
   github: {
-    username: githubLink?.username ?? "victorsoren",
-    profileUrl: githubLink?.href ?? "https://github.com/victorsoren",
+    username: githubLink?.username ?? "Victor5899",
+    profileUrl: githubLink?.href ?? "https://github.com/Victor5899",
     showContributions: true,
   },
   leetcode: {
-    username: leetcodeLink?.username ?? "victorsoren",
-    profileUrl: leetcodeLink?.href ?? "https://leetcode.com/u/victorsoren",
+    username: leetcodeLink?.username ?? "Victor5899",
+    profileUrl: leetcodeLink?.href ?? "https://leetcode.com/u/Victor5899/",
   },
 };

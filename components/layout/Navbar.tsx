@@ -76,21 +76,23 @@ export function Navbar() {
 
         <div className="flex items-center gap-1.5">
           <ThemeToggle />
-          <Button
-            render={
-              <a
-                href={profile.resumeUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-              />
-            }
-            variant="gradient"
-            size="lg"
-            className="hidden sm:inline-flex"
-          >
-            <FileText />
-            Resume
-          </Button>
+          {profile.resumeUrl ? (
+            <Button
+              render={
+                <a
+                  href={profile.resumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                />
+              }
+              variant="gradient"
+              size="lg"
+              className="hidden sm:inline-flex"
+            >
+              <FileText />
+              Resume
+            </Button>
+          ) : null}
           <MobileNav items={navigation} activeId={activeId} />
         </div>
       </nav>

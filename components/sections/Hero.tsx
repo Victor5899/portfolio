@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowRight, FileText } from "lucide-react";
+import type { Metric } from "@/types";
 import { profile } from "@/content/profile";
 import { SECTION_IDS, NAV_CONFIG } from "@/constants/navigation";
 import { fadeInUp, riseIn, staggerContainer } from "@/constants/animation";
@@ -19,9 +20,9 @@ import { FloatingTech } from "./hero/FloatingTech";
  * on load; the LCP headline uses a translate-only reveal so it is legible
  * instantly (FR-HERO-5), and everything collapses to a static layout under
  * `prefers-reduced-motion` (MOT-4). Client leaf for the typing, count-up, and
- * floating effects.
+ * floating effects; `stats` is derived server-side by `lib/metrics`.
  */
-export function Hero() {
+export function Hero({ stats }: { stats: Metric[] }) {
   const prefersReduced = useReducedMotion();
   const nameWords = profile.name.split(" ");
   const lastName = nameWords.pop();
@@ -87,20 +88,22 @@ export function Hero() {
             variants={fadeInUp}
             className="flex w-full flex-col items-center gap-3 sm:w-auto sm:flex-row"
           >
-            <Button
-              render={
-                <a
-                  href={profile.resumeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                />
-              }
-              variant="gradient"
-              className="h-11 w-full rounded-xl px-6 text-[0.95rem] sm:w-auto"
-            >
-              <FileText />
-              Resume
-            </Button>
+            {profile.resumeUrl ? (
+              <Button
+                render={
+                  <a
+                    href={profile.resumeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  />
+                }
+                variant="gradient"
+                className="h-11 w-full rounded-xl px-6 text-[0.95rem] sm:w-auto"
+              >
+                <FileText />
+                Resume
+              </Button>
+            ) : null}
             <Button
               render={<a href={`#${SECTION_IDS.projects}`} />}
               variant="glass"
@@ -116,7 +119,10 @@ export function Hero() {
           </motion.div>
 
           <motion.div variants={fadeInUp} className="mt-4 w-full">
-            <HeroStats className="mx-auto grid max-w-2xl grid-cols-2 gap-3 sm:grid-cols-4" />
+            <HeroStats
+              stats={stats}
+              className="mx-auto grid max-w-xl grid-cols-3 gap-3"
+            />
           </motion.div>
         </motion.div>
       </Container>

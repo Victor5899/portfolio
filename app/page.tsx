@@ -11,6 +11,7 @@ import {
   Timeline,
   Contact,
 } from "@/components/sections";
+import { getPortfolioMetrics } from "@/lib/metrics";
 
 /**
  * Home page (SRS §7). Composes the section components in the canonical order:
@@ -23,7 +24,7 @@ import {
 export default function Home() {
   return (
     <>
-      <Hero />
+      <Hero stats={getPortfolioMetrics()} />
       <About />
       <TechStack />
       <Projects />

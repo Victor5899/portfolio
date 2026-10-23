@@ -5,6 +5,7 @@ import { socials } from "@/content/socials";
 import { profile } from "@/content/profile";
 import { primaryEducation } from "@/content/education";
 import { ROUTES } from "@/constants/routes";
+import { toMailtoHref } from "./format";
 
 /** Absolute URL for a site-relative path, using the canonical site URL. */
 function absoluteUrl(path: string): string {
@@ -103,7 +104,7 @@ export function buildPersonJsonLd(): Record<string, unknown> {
     name: seo.authorName,
     url: seo.url,
     image: absoluteUrl("/opengraph-image"),
-    email: `mailto:${profile.email}`,
+    email: toMailtoHref(profile.email),
     jobTitle: profile.role,
     description: profile.summary,
     knowsAbout: profile.targetRoles,

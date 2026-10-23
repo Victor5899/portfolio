@@ -16,7 +16,7 @@ export const profile: Profile = {
   about:
     "I am passionate about Data Analytics, Machine Learning, Artificial Intelligence, Data Engineering, and building real-world software products. I enjoy solving practical problems using Python, SQL, Machine Learning, and modern data technologies.",
   location: "India",
-  email: "victor.ipil.soren@gmail.com",
+  email: "victoripilsoren9985@gmail.com",
   resumeUrl: "/resume.pdf",
   avatar: "/images/avatar.jpg",
   available: true,
@@ -26,12 +26,6 @@ export const profile: Profile = {
     "Machine Learning",
     "Data Engineering",
     "Software Engineering",
-  ],
-  heroStats: [
-    { label: "CGPA", value: 8.17, decimals: 2 },
-    { label: "Projects Built", value: 5 },
-    { label: "Focus Domains", value: 4 },
-    { label: "Technologies", value: 20, suffix: "+" },
   ],
   technologies: [
     "python",
