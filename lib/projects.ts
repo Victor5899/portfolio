@@ -1,5 +1,14 @@
 import type { Project } from "@/types";
 import { projects } from "@/content/projects";
+import { formatDateRange } from "@/lib/format";
+
+/** Card, hero, and timeline label. A missing period keeps the published year. */
+export function formatProjectDates(
+  project: Pick<Project, "year" | "period">,
+): string {
+  if (!project.period) return project.year;
+  return formatDateRange(project.period.start, project.period.end);
+}
 
 /** Reusable selectors over project content so components never filter inline. */
 

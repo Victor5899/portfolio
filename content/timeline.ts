@@ -13,14 +13,34 @@ import { profile } from "./profile";
  * hardcoded), and items are ordered chronologically, most recent first (FR-TL-2).
  */
 
-/** Extract a sortable year from mixed date strings ("2024", "May 2027", "Present"). */
-function yearOf(value: string): number {
-  const match = value.match(/\d{4}/);
-  if (match) return Number(match[0]);
-  if (value.trim().toLowerCase() === "present") {
-    return new Date().getFullYear() + 1;
-  }
-  return 0;
+const MONTH_RANK: Record<string, number> = {
+  january: 1,
+  february: 2,
+  march: 3,
+  april: 4,
+  may: 5,
+  june: 6,
+  july: 7,
+  august: 8,
+  september: 9,
+  october: 10,
+  november: 11,
+  december: 12,
+};
+
+/**
+ * Sort key for mixed date strings ("2024", "May 2027", "June 2026", "Present").
+ * A bare year ranks before any month in that year. "Present" sorts last.
+ */
+function dateRank(value: string): number {
+  const normalized = value.trim().toLowerCase();
+  if (normalized === "present") return (new Date().getFullYear() + 1) * 12 + 12;
+  const yearMatch = normalized.match(/\d{4}/);
+  const year = yearMatch ? Number(yearMatch[0]) : 0;
+  const monthName = Object.keys(MONTH_RANK).find((name) =>
+    new RegExp(`\\b${name}\\b`).test(normalized),
+  );
+  return year * 12 + (monthName ? MONTH_RANK[monthName] : 0);
 }
 
 const educationItems: TimelineItem[] = education.map((entry) => ({
@@ -47,8 +67,8 @@ const projectItems: TimelineItem[] = projects.map((project) => ({
   kind: "project",
   title: project.title,
   organization: project.domain.join(" · "),
-  start: project.year,
-  end: project.year,
+  start: project.period?.start ?? project.year,
+  end: project.period?.end ?? project.year,
   description: project.tagline,
 }));
 
@@ -86,5 +106,5 @@ export const timeline: TimelineItem[] = [
   ...educationItems,
   ...certificationItems,
 ].sort(
-  (a, b) => yearOf(b.end) - yearOf(a.end) || yearOf(b.start) - yearOf(a.start),
+  (a, b) => dateRank(b.end) - dateRank(a.end) || dateRank(b.start) - dateRank(a.start),
 );

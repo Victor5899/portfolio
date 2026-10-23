@@ -4,8 +4,8 @@
 
 > **Document type:** Software Requirements Specification (SRS)
 > **Status:** Authoritative source of truth
-> **Version:** 1.1
-> **Last updated:** 2026-07-15
+> **Version:** 1.2
+> **Last updated:** 2026-10-23
 
 ---
 
@@ -364,6 +364,7 @@ export interface Project {
   image: string;
   links: { live?: string; repo?: string; caseStudy?: string; demo?: string };
   year: string;
+  period?: { start: string; end: string }; // month window; UI falls back to year
   domain: ("Data Analytics" | "Machine Learning" | "Data Engineering" | "Software")[];
 }
 
@@ -428,7 +429,7 @@ Every section shares: a stable `id` anchor, a `SectionHeading` (eyebrow + title 
 
 ### 7.5 Projects
 
-- **FR-PROJ-1** Render the project grid from `content/projects.ts`. The portfolio showcases **exactly three** case studies: the **Primary Featured Project** (`featured: true`) — **Financial News Sentiment Analytics Platform** — is visually emphasized (larger card / featured band), followed by **Customer Churn Prediction Dashboard** and **Vendor Performance Analytics**.
+- **FR-PROJ-1** Render the project grid from `content/projects.ts`. The portfolio showcases **exactly four** case studies, in this order. The **Primary Featured Project** (`featured: true`) — **Real-Time Financial News Analytics & Stock Movement Prediction Platform** — is visually emphasized (larger card / featured band), followed by **Oracle AI Vector Search – Intelligent Document Q&A System**, **E-Commerce Customer Churn Prediction & Analytics Platform**, and **Vendor Performance Data Analysis**.
 - **FR-PROJ-2** Each `ProjectCard` shows title, tagline, tech tags, and links (live/repo/case study/demo) when present.
 - **FR-PROJ-3** Cards are **animated**: hover elevation + optional restrained **parallax tilt** (`react-parallax-tilt`), disabled on touch and under reduced motion.
 - **FR-PROJ-4** Project detail must convey **problem → approach → impact** and measurable highlights.
@@ -672,18 +673,20 @@ The portfolio is considered successful when it:
 | --- | --- | --- |
 | 1.0 | 2026-07-15 | Initial SRS: full requirements for the Personal Portfolio. |
 | 1.1 | 2026-07-15 | Reduced the showcased projects from five to three (Primary Featured + two); removed **Smart Expense Splitter** and **Blockchain Legal Vault** from [§7.5](#75-projects) and [Appendix A](#17-appendix-a--featured-projects-backlog). |
+| 1.2 | 2026-10-23 | Expanded the showcased projects from three to four and renamed them. Order: Real-Time Financial News Analytics & Stock Movement Prediction Platform (Primary Featured), Oracle AI Vector Search – Intelligent Document Q&A System, E-Commerce Customer Churn Prediction & Analytics Platform, Vendor Performance Data Analysis. |
 
 ---
 
 ## 17. Appendix A — Featured Projects Backlog
 
-Authoritative project list (defined in `content/projects.ts`). The portfolio showcases **exactly three** case studies, led by the Primary Featured Project. Each requires problem → approach → impact and measurable highlights before launch.
+Authoritative project list (defined in `content/projects.ts`). The portfolio showcases **exactly four** case studies, in this order, led by the Primary Featured Project. Each requires problem → approach → impact and measurable highlights before launch.
 
 | # | Project | Flagship | Primary domain(s) |
 | --- | --- | --- | --- |
-| 1 | **Financial News Sentiment Analytics Platform** | ✅ Yes (Primary Featured) | Machine Learning, Data Analytics, Data Engineering |
-| 2 | Customer Churn Prediction Dashboard | No | Machine Learning, Data Analytics |
-| 3 | Vendor Performance Analytics | No | Data Analytics, Data Engineering |
+| 1 | **Real-Time Financial News Analytics & Stock Movement Prediction Platform** | ✅ Yes (Primary Featured) | Machine Learning, Data Analytics, Data Engineering |
+| 2 | Oracle AI Vector Search – Intelligent Document Q&A System | No | Machine Learning, Software |
+| 3 | E-Commerce Customer Churn Prediction & Analytics Platform | No | Machine Learning, Data Analytics |
+| 4 | Vendor Performance Data Analysis | No | Data Analytics, Data Engineering |
 
 > Owner to supply per-project: tagline, problem/approach/impact, role, stack, highlights/metrics, image, and links (live/repo/case study/demo), and set `featured` accordingly.
 

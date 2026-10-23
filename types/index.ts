@@ -6,6 +6,7 @@ export type {
   Project,
   ProjectDomain,
   ProjectLinks,
+  ProjectPeriod,
   ProjectScreenshot,
 } from "./project";
 export type { Certification } from "./certification";

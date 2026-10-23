@@ -18,6 +18,15 @@ export interface ProjectScreenshot {
   caption?: string;
 }
 
+/**
+ * Inclusive month-level window, e.g. `{ start: "June 2026", end: "July 2026" }`.
+ * When omitted, the UI falls back to `year`.
+ */
+export interface ProjectPeriod {
+  start: string;
+  end: string;
+}
+
 export interface Project {
   slug: string;
   title: string;
@@ -41,7 +50,10 @@ export interface Project {
   /** Cover image path served from /public/projects. */
   image: string;
   links: ProjectLinks;
+  /** Calendar year used for structured data. Display falls back to this when `period` is absent. */
   year: string;
+  /** Month-level window shown on cards, the case study, and the timeline. */
+  period?: ProjectPeriod;
   domain: ProjectDomain[];
 
   // ── Optional case-study detail fields (SRS §7.5 / Appendix A) ──────────────

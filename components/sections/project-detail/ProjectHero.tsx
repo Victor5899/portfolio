@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import type { Project } from "@/types";
 import { ROUTES } from "@/constants/routes";
+import { formatProjectDates } from "@/lib/projects";
 import { Container } from "@/components/layout/Container";
 import { Heading, Text, Eyebrow } from "@/components/common/Typography";
 import { ProjectImage } from "@/components/common/ProjectImage";
@@ -15,9 +16,10 @@ import { ProjectLinks } from "@/components/common/ProjectLinks";
  */
 export function ProjectHero({ project }: { project: Project }) {
   const domains = project.domain.join(" / ");
+  const dates = formatProjectDates(project);
   const facts = [
     { label: "Role", value: project.role },
-    { label: "Year", value: project.year },
+    { label: project.period ? "Dates" : "Year", value: dates },
     { label: "Domain", value: project.domain.join(", ") },
   ];
 
@@ -35,7 +37,7 @@ export function ProjectHero({ project }: { project: Project }) {
         <div className="mt-12 flex flex-col gap-6 sm:mt-16">
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1">
             <Eyebrow className="text-brand">Case study</Eyebrow>
-            <Eyebrow>{project.year}</Eyebrow>
+            <Eyebrow>{dates}</Eyebrow>
             <Eyebrow>{domains}</Eyebrow>
           </div>
           <Heading as="h1" size="display" className="max-w-5xl">

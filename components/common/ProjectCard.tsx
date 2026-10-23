@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import type { Project } from "@/types";
 import { ROUTES } from "@/constants/routes";
+import { formatProjectDates } from "@/lib/projects";
 import { cn } from "@/lib/utils";
 import { ProjectImage } from "./ProjectImage";
 import { ProjectLinks } from "./ProjectLinks";
@@ -58,7 +59,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
               </Eyebrow>
             ) : null}
             {featured ? <Eyebrow className="text-foreground">Featured</Eyebrow> : null}
-            <Eyebrow>{project.year}</Eyebrow>
+            <Eyebrow>{formatProjectDates(project)}</Eyebrow>
             <Eyebrow className="hidden sm:inline">{domains}</Eyebrow>
           </div>
 
