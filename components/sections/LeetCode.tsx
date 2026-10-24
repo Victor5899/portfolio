@@ -10,7 +10,7 @@ import { Surface } from "@/components/common/Surface";
 import { CountUp } from "@/components/common/CountUp";
 import { Reveal } from "@/components/common/Reveal";
 import { Heading, Text, Eyebrow } from "@/components/common/Typography";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { DifficultyBar } from "./leetcode/DifficultyBar";
 
 /**
@@ -57,16 +57,15 @@ export async function LeetCode() {
               </p>
             </div>
 
-            <Button
-              size="lg"
-              className="self-start"
-              render={
-                <a href={profileUrl} target="_blank" rel="noopener noreferrer" />
-              }
+            <a
+              href={profileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonVariants({ size: "lg", className: "self-start" })}
             >
               View LeetCode profile
               <ArrowUpRight />
-            </Button>
+            </a>
           </Surface>
         </Reveal>
 

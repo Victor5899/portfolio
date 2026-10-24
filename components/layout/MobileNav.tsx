@@ -4,7 +4,7 @@ import { useCallback, useEffect, useId, useRef, useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import type { NavItem } from "@/types";
 import { profile } from "@/content/profile";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { SocialLinks } from "@/components/common/SocialLinks";
 import { cn } from "@/lib/utils";
 
@@ -147,20 +147,15 @@ export function MobileNav({ items, activeId }: MobileNavProps) {
 
             <div className="mt-auto flex flex-col gap-4">
               {profile.resumeUrl ? (
-                <Button
-                  render={
-                    <a
-                      href={profile.resumeUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    />
-                  }
-                  size="lg"
-                  className="w-full"
+                <a
+                  href={profile.resumeUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={cn(buttonVariants({ size: "lg" }), "w-full")}
                 >
                   Résumé
                   <ArrowUpRight />
-                </Button>
+                </a>
               ) : null}
               <SocialLinks className="justify-center" />
             </div>

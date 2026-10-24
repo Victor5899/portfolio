@@ -20,7 +20,11 @@ export default function GlobalError({
   }, [error]);
 
   return (
-    <html lang="en" className="dark h-full antialiased">
+    <html
+      lang="en"
+      data-scroll-behavior="smooth"
+      className="dark h-full antialiased"
+    >
       <body className="bg-background text-foreground flex min-h-full flex-col items-center justify-center gap-6 p-8 text-center">
         <h1 className="text-3xl font-semibold tracking-tight">
           Something went wrong

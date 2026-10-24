@@ -1,17 +1,18 @@
 import { ExternalLink, PlayCircle } from "lucide-react";
 import { FaGithub } from "react-icons/fa6";
+import type { VariantProps } from "class-variance-authority";
 import type { ProjectLinks as ProjectLinksData } from "@/types";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 interface ProjectLinksProps {
   links: ProjectLinksData;
   className?: string;
-  size?: React.ComponentProps<typeof Button>["size"];
+  size?: VariantProps<typeof buttonVariants>["size"];
 }
 
 /**
- * Renders the external action buttons (Live Demo / GitHub / Demo) for a
+ * Renders the external action links (Live Demo / GitHub / Demo) for a
  * project, showing only the links that exist so empty/optional link fields
  * degrade gracefully (FR-PROJ-6 / DATA-6). External links open in a new tab with
  * `rel="noopener noreferrer"` (FR-CERT-2 pattern). Returns null when there are
@@ -24,33 +25,37 @@ export function ProjectLinks({ links, className, size = "lg" }: ProjectLinksProp
   return (
     <div className={cn("flex flex-wrap gap-2", className)}>
       {live ? (
-        <Button
-          size={size}
-          render={<a href={live} target="_blank" rel="noopener noreferrer" />}
+        <a
+          href={live}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={buttonVariants({ size })}
         >
           <ExternalLink />
           Live Demo
-        </Button>
+        </a>
       ) : null}
       {repo ? (
-        <Button
-          size={size}
-          variant="outline"
-          render={<a href={repo} target="_blank" rel="noopener noreferrer" />}
+        <a
+          href={repo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={buttonVariants({ variant: "outline", size })}
         >
           <FaGithub />
           GitHub
-        </Button>
+        </a>
       ) : null}
       {demo ? (
-        <Button
-          size={size}
-          variant="outline"
-          render={<a href={demo} target="_blank" rel="noopener noreferrer" />}
+        <a
+          href={demo}
+          target="_blank"
+          rel="noopener noreferrer"
+          className={buttonVariants({ variant: "outline", size })}
         >
           <PlayCircle />
           Demo
-        </Button>
+        </a>
       ) : null}
     </div>
   );

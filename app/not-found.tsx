@@ -4,7 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import { Container } from "@/components/layout/Container";
 import { Heading, Text, Eyebrow } from "@/components/common/Typography";
 import { AccentText } from "@/components/common/AccentText";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { ROUTES } from "@/constants/routes";
 
 export const metadata: Metadata = {
@@ -25,14 +25,13 @@ export default function NotFound() {
       <Text variant="lead" className="max-w-md">
         The page you are looking for doesn&apos;t exist or may have been moved.
       </Text>
-      <Button
-        render={<Link href={ROUTES.home} />}
-        size="xl"
-        className="self-start"
+      <Link
+        href={ROUTES.home}
+        className={buttonVariants({ size: "xl", className: "self-start" })}
       >
         <ArrowLeft />
         Back to home
-      </Button>
+      </Link>
     </Container>
   );
 }

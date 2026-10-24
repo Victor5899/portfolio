@@ -7,7 +7,7 @@ import { profile } from "@/content/profile";
 import { SECTION_IDS, NAV_CONFIG } from "@/constants/navigation";
 import { fadeInUp, riseIn, staggerContainer } from "@/constants/animation";
 import { Container } from "@/components/layout/Container";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { AccentText } from "@/components/common/AccentText";
 import { SocialLinks } from "@/components/common/SocialLinks";
 import { TypingRole } from "./hero/TypingRole";
@@ -79,28 +79,23 @@ export function Hero({ stats }: { stats: Metric[] }) {
               </p>
               <div className="flex flex-col gap-3 pt-2 sm:flex-row">
                 {profile.resumeUrl ? (
-                  <Button
-                    render={
-                      <a
-                        href={profile.resumeUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      />
-                    }
-                    size="xl"
+                  <a
+                    href={profile.resumeUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={buttonVariants({ size: "xl" })}
                   >
                     Résumé
                     <ArrowUpRight />
-                  </Button>
+                  </a>
                 ) : null}
-                <Button
-                  render={<a href={`#${SECTION_IDS.projects}`} />}
-                  variant="outline"
-                  size="xl"
+                <a
+                  href={`#${SECTION_IDS.projects}`}
+                  className={buttonVariants({ variant: "outline", size: "xl" })}
                 >
                   View projects
                   <ArrowDown />
-                </Button>
+                </a>
               </div>
             </motion.div>
 

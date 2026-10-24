@@ -8,7 +8,7 @@ import { AccentText } from "@/components/common/AccentText";
 import { SocialIcon } from "@/components/common/SocialIcon";
 import { Reveal } from "@/components/common/Reveal";
 import { Heading, Text, Eyebrow } from "@/components/common/Typography";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 
 /**
  * Contact (SRS §7.12). An editorial closing spread: a display headline, the
@@ -56,21 +56,19 @@ export function Contact() {
           ) : null}
 
           {profile.resumeUrl ? (
-            <Button
-              variant="outline"
-              size="xl"
-              className="self-start"
-              render={
-                <a
-                  href={profile.resumeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                />
-              }
+            <a
+              href={profile.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonVariants({
+                variant: "outline",
+                size: "xl",
+                className: "self-start",
+              })}
             >
               Download résumé
               <ArrowUpRight />
-            </Button>
+            </a>
           ) : null}
         </Reveal>
 

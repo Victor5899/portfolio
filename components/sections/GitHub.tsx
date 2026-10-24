@@ -9,7 +9,7 @@ import { Surface } from "@/components/common/Surface";
 import { StatCard } from "@/components/common/StatCard";
 import { Reveal, StaggerGroup, StaggerItem } from "@/components/common/Reveal";
 import { Eyebrow, Heading, Text } from "@/components/common/Typography";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 
 /**
  * GitHub (SRS §7.9). Identity + profile CTA are always present (FR-GH-1); live
@@ -54,16 +54,15 @@ export async function GitHub() {
               </Text>
             </div>
 
-            <Button
-              size="lg"
-              className="self-start"
-              render={
-                <a href={profileUrl} target="_blank" rel="noopener noreferrer" />
-              }
+            <a
+              href={profileUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={buttonVariants({ size: "lg", className: "self-start" })}
             >
               View GitHub profile
               <ArrowUpRight />
-            </Button>
+            </a>
           </Surface>
         </Reveal>
 

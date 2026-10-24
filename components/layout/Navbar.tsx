@@ -4,7 +4,7 @@ import { useEffect, useMemo, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { profile } from "@/content/profile";
 import { NAV_CONFIG } from "@/constants/navigation";
-import { Button } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { getPrimaryNavigation, getVisibleNavigation } from "@/lib/navigation";
 import { cn } from "@/lib/utils";
@@ -82,21 +82,18 @@ export function Navbar() {
         <div className="flex items-center gap-1.5">
           <ThemeToggle />
           {profile.resumeUrl ? (
-            <Button
-              render={
-                <a
-                  href={profile.resumeUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                />
-              }
-              variant="outline"
-              size="sm"
-              className="hidden sm:inline-flex"
+            <a
+              href={profile.resumeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "sm" }),
+                "hidden sm:inline-flex",
+              )}
             >
               Résumé
               <ArrowUpRight />
-            </Button>
+            </a>
           ) : null}
           <MobileNav items={navigation} activeId={activeId} />
         </div>
