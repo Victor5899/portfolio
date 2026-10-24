@@ -49,6 +49,11 @@ export interface Project {
   highlights?: string[];
   /** Cover image path served from /public/projects. */
   image: string;
+  /**
+   * How the cover sits in its frame. `cover` fills and crops (the default).
+   * `contain` shows the whole screenshot, with the frame's surface as the mat.
+   */
+  imageFit?: "cover" | "contain";
   links: ProjectLinks;
   /** Calendar year used for structured data. Display falls back to this when `period` is absent. */
   year: string;

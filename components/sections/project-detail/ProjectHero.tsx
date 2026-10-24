@@ -61,6 +61,7 @@ export function ProjectHero({ project }: { project: Project }) {
           className="mt-12 sm:mt-16"
           sizes="(min-width: 1152px) 1152px, 100vw"
           priority
+          fit={project.imageFit}
         />
 
         <dl className="border-border mt-10 grid gap-8 border-t pt-8 sm:grid-cols-3">

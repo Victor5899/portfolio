@@ -38,6 +38,7 @@ export function ProjectCard({ project, index, featured = false }: ProjectCardPro
         kicker={domains}
         aspect={featured ? "aspect-[4/3] sm:aspect-[16/9] lg:aspect-[21/9]" : "aspect-[4/3]"}
         zoomOnHover
+        fit={project.imageFit}
         sizes={
           featured
             ? "(min-width: 1152px) 1152px, 100vw"

@@ -377,6 +377,9 @@ export const projects: Project[] = [
       },
     ],
     image: "/projects/vendor-performance/cover.webp",
+    // Short full-page capture. Cover-cropping the shared 4:3 and 16:9 frames
+    // cuts the chart rows and the sides of the browser window.
+    imageFit: "contain",
     links: {
       repo: "https://github.com/Victor5899/vendor-performance-analysis",
     },

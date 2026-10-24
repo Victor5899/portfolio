@@ -16,6 +16,11 @@ interface ProjectImageProps {
   priority?: boolean;
   /** Subtle zoom when an ancestor `group` is hovered. */
   zoomOnHover?: boolean;
+  /**
+   * `cover` fills the frame and crops. `contain` scales the whole image
+   * inside a padded mat so nothing is clipped.
+   */
+  fit?: "cover" | "contain";
 }
 
 /**
@@ -35,8 +40,10 @@ export function ProjectImage({
   sizes = "(min-width: 1024px) 45vw, (min-width: 640px) 90vw, 100vw",
   priority = false,
   zoomOnHover = false,
+  fit = "cover",
 }: ProjectImageProps) {
   const hasImage = publicAssetExists(src);
+  const contained = fit === "contain";
   const zoom =
     zoomOnHover &&
     "transition-transform duration-700 ease-out-expo group-hover:scale-103";
@@ -50,14 +57,27 @@ export function ProjectImage({
       )}
     >
       {hasImage ? (
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          sizes={sizes}
-          priority={priority}
-          className={cn("object-cover", zoom)}
-        />
+        contained ? (
+          <div className="absolute inset-3 sm:inset-4">
+            <Image
+              src={src}
+              alt={alt}
+              fill
+              sizes={sizes}
+              priority={priority}
+              className={cn("object-contain", zoom)}
+            />
+          </div>
+        ) : (
+          <Image
+            src={src}
+            alt={alt}
+            fill
+            sizes={sizes}
+            priority={priority}
+            className={cn("object-cover", zoom)}
+          />
+        )
       ) : (
         <div aria-hidden className={cn("absolute inset-0", zoom)}>
           <div className="bg-grid mask-fade-down absolute inset-0 opacity-70" />
